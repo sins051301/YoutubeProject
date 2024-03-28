@@ -1,17 +1,16 @@
-import { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Header from "./header";
 import Sidebar from "./Side";
-import Tag from "./Tag";
+import Tagname from "./Tag";
 import PlayList from "./playList/PlayList";
 import ShortList from "./shorts/ShortList";
 import Shorthead from "./shorts/Shortheader";
-import React from "react";
 
 const StyledHeadcover = styled.div`
   z-index: 1;
   position: fixed;
-  position: absolute;
+  position: relative;
 `;
 const Shortcover = styled.div`
   z-index: 0;
@@ -30,10 +29,9 @@ const Styledfunc = styled.div`
   height: 34px;
   border-radius: 10px;
   position: relative;
-  display: flex;
   text-align: center;
   top: 195px;
-  left: 50%;
+  left: 40%;
   background-color: #ffffff;
   border: 1px solid #ccc;
 `;
@@ -47,18 +45,19 @@ const Styledtag = styled.div`
   top: 55px;
   background-color: #ffffff;
 `;
+
+
 export default function MainPage() {
   return (
     <div>
       <StyledHeadcover>
         <Header></Header>
-
-        <Sidebar></Sidebar>
       </StyledHeadcover>
-      <Styledtag>
-        <Tag></Tag>
-      </Styledtag>
 
+      <Styledtag>
+        <Tagname></Tagname>
+      </Styledtag>
+      <Sidebar></Sidebar>
       <PlayList></PlayList>
       <Shortcover>
         <Shorthead></Shorthead>

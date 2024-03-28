@@ -1,20 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 const StyledFirst = styled.div`
-  
-  position: absolute;
   display: flex;
-  left: 0%;
+  
   flex-direction: row;
   justify-content: space-between;
   padding: 16px;
-
   gap: 20px;
 `;
 
 const StyledSecond = styled.div`
-  position: absolute;
-  left: 20%;
+ 
+
   display: flex;
   flex-direction: row-reverse;
   gap: 10px;
@@ -22,9 +19,9 @@ const StyledSecond = styled.div`
   padding: 16px;
 `;
 const StyledThird = styled.div`
-  position: absolute;
+  
   display: flex;
-  right: 0%;
+
   flex-direction: row;
   justify-content: space-between;
   padding: 16px;
@@ -37,13 +34,11 @@ const StyledHeader = styled.div`
   padding: 0px 16px;
   justify-content: space-between;
   align-items: center;
-  //gap: 30px;
   width: 100%;
   height: 56px;
   background-color: #ffffff;
 `;
 const StyledInput = styled.input`
-
   border-top-left-radius: 35px;
   border-bottom-left-radius: 35px;
   max-width: 600px;
@@ -51,7 +46,7 @@ const StyledInput = styled.input`
   height: 40px;
   &::placeholder {
     position: relative;
-    left: 10%;
+    left: 5%;
   }
 
   border: 1px solid #ccc;
@@ -63,22 +58,22 @@ const StyledButton = styled.button`
   border-bottom-right-radius: 35px;
   width: 63.99px;
   background-color: rgb(244, 244, 244);
-
   border: 1px solid #ccc;
   //padding: 16px;
 `;
 
-const StyledProfile = styled.div`
+const StyledProfile = styled.button`
   width: 32px;
   height: 32px;
   border-radius: 50px;
   background-image: url("/img/myprofile.png");
   background-size: cover;
+  border: none;
 `;
-const StyledMike = styled.div`
+const StyledMike = styled.button`
   width: 40px;
   height: 40px;
-  border-radius: 50px;
+  border-radius: 40px;
   background-color: rgb(244, 244, 244);
   border: 1px solid #ccc;
 

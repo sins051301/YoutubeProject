@@ -28,12 +28,14 @@ const Styledfunc = styled.div`
   justify-content: space-between;
   gap: 10px;
 `;
-const Styledbutton = styled.div`
+const Styledbutton = styled.button`
   width: 40px;
   height: 40px;
   background-color: none;
   position: absolute;
   right: 0px;
+  border: none;
+  background-color: rgb(255, 255, 255);
 `;
 const StyledHeader = styled.div`
   display: flex;

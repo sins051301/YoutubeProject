@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useState } from "react";
 
 interface Link {
   id: number;
@@ -27,60 +28,86 @@ const ProfileList: Link[] = [
   { id: 5, link: "/profile/profile6.png", explain: "카라미 학원" },
   { id: 6, link: "/profile/profile7.png", explain: "프제짱" },
 ];
+const SearchList: Link[] = [
+  { id: 0, link: "/search/search1.png", explain: "인기 급상승" },
+  { id: 1, link: "/search/search2.png", explain: "쇼핑" },
+  { id: 2, link: "/search/search3.png", explain: "음악" },
+  { id: 3, link: "/search/search4.png", explain: "영화" },
+  { id: 4, link: "/search/search5.png", explain: "실시간" },
+  { id: 5, link: "/search/search6.png", explain: "게임" },
+  { id: 6, link: "/search/search7.png", explain: "스포츠" },
+  { id: 7, link: "/search/search8.png", explain: "학습 프로그램" },
+  { id: 8, link: "/search/search9.png", explain: "팟캐스터" },
+];
 const StyledCover = styled.div`
-  display: block;
+  display: flex;
   position: fixed;
-  top: 70px;
+  flex-direction: column;
+  top: 50px;
   width: 240px;
-  height: 100%;
-  //padding: 12px;
+  height: auto;
+  overflow-y: auto; /* 세로 스크롤만 표시 */
+  overflow-x: hidden; /* 가로 스크롤은 숨김 */
+  &:hover::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    scrollbar-color: #000000;
+  }
 `;
 const StyledProfileCover = styled.div`
-  display: block;
-  position: fixed;
-  top: 490px;
+  display: flex;
+  flex-direction: column;
+ 
   width: 240px;
-  height: 376px;
+  height: 100%;
   padding: 12px;
-  margin: 12px;
+  margin-left: 10px;
   border-bottom: 1px solid #ccc;
+ 
 `;
 const StyledCoverdown = styled.div`
-  display: block;
+  display: flex;
   flex-direction: column;
   width: 216px;
   height: 252px;
   padding: 12px;
-  margin: 12px;
-   border-bottom: 1px solid #ccc; 
+  margin-left: 10px;
+  border-bottom: 1px solid #ccc;
 `;
 const StyledCoverUp = styled.div`
   display: flex;
   flex-direction: column;
   padding: 12px;
-  margin: 12px;
+  margin-left: 10px;
   border-bottom: 1px solid #ccc;
 `;
-const StyledHome = styled.div`
+const StyledHome = styled.button`
   width: 204px;
   height: 40px;
   border-radius: 10px;
-  background-color: rgb(244, 244, 244);
   padding: 6px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border: none;
   gap: 10px;
+  &:hover {
+    background-color: rgb(244, 244, 244);
+  }
 `;
-const Styledfunc = styled.div`
+const Styledfunc = styled.button`
   width: 204px;
   height: 40px;
+  border: none;
   border-radius: 10px;
-  //padding: 6px 12px;
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 10px;
+  &:hover {
+    background-color: rgb(244, 244, 244);
+  }
 `;
 
 const Styledexplain = styled.div`
@@ -88,6 +115,7 @@ const Styledexplain = styled.div`
   height: 20px;
   font-size: 14px;
   color: "#0F0F0F";
+  text-align: left;
 `;
 
 const Styledicon = styled.div<{ bgImage: string }>`
@@ -105,9 +133,13 @@ const StyledProfile = styled.div<{ bgImage: string }>`
   background-size: cover;
 `;
 
+const Styledscroll = styled.div`
+
+`;
+
 export default function Sidebar() {
   return (
-    <div>
+    <Styledscroll>
       <StyledCover>
         <StyledCoverUp>
           <StyledHome>
@@ -147,20 +179,38 @@ export default function Sidebar() {
             </Styledfunc>
           ))}
         </StyledCoverdown>
-      </StyledCover>
-      <StyledProfileCover>
-        <Styledfunc>구독</Styledfunc>
-        {ProfileList.map((lst) => (
+        <StyledProfileCover>
+          <Styledfunc>구독</Styledfunc>
+          {ProfileList.map((lst) => (
+            <Styledfunc>
+              <StyledProfile key={lst.id} bgImage={lst.link}></StyledProfile>
+              <Styledexplain>{lst.explain}</Styledexplain>
+            </Styledfunc>
+          ))}
           <Styledfunc>
-            <StyledProfile key={lst.id} bgImage={lst.link}></StyledProfile>
-            <Styledexplain>{lst.explain}</Styledexplain>
+            <Styledicon bgImage="/img/More.png"></Styledicon>
+            <Styledexplain>21개 더보기</Styledexplain>
           </Styledfunc>
-        ))}
-        <Styledfunc>
-          <Styledicon bgImage="/img/More.png"></Styledicon>
-          <Styledexplain>21개 더보기</Styledexplain>
-        </Styledfunc>
-      </StyledProfileCover>
-    </div>
+        </StyledProfileCover>
+        <StyledProfileCover>
+          <Styledfunc>탐색</Styledfunc>
+          {SearchList.map((lst) => (
+            <Styledfunc>
+              <StyledProfile key={lst.id} bgImage={lst.link}></StyledProfile>
+              <Styledexplain>{lst.explain}</Styledexplain>
+            </Styledfunc>
+          ))}
+        </StyledProfileCover>
+        <StyledProfileCover>
+          <Styledfunc>탐색</Styledfunc>
+          {SearchList.map((lst) => (
+            <Styledfunc>
+              <StyledProfile key={lst.id} bgImage={lst.link}></StyledProfile>
+              <Styledexplain>{lst.explain}</Styledexplain>
+            </Styledfunc>
+          ))}
+        </StyledProfileCover>
+      </StyledCover>
+    </Styledscroll>
   );
 }

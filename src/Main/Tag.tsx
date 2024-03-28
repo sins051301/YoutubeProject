@@ -33,8 +33,11 @@ const StyledButton = styled.button`
   background-color: rgb(244, 244, 244);
   font-size: 14px;
   //padding: 16px;
+  &:hover {
+    background-color: rgb(244, 244, 244);
+  }
 `;
-export default function Tag() {
+export default function Tagname() {
   return (
     <StyledTagCover>
       {tagList.map((lst) => (
